@@ -34,13 +34,10 @@ public class UserController {
         );
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUser(@PathVariable("id") int id) {
-        var user = userService.getUser(id).orElse(null);
-        if (user == null)
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok(userMapper.toDto(user));
+    @GetMapping("/me")
+    public ResponseEntity<UserDto> getMyInfo() {
+        // after JWT implementation, using the principle object to get the info
+        return ResponseEntity.ok(null);
     }
 
 }

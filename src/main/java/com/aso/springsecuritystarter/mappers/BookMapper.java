@@ -15,4 +15,13 @@ public class BookMapper {
         );
     }
 
+    public Book toEntity(BookDto bookDto) {
+        return new Book(
+                null,
+                bookDto.title(),
+                bookDto.price(),
+                false
+        );
+    }
+
 }
