@@ -26,6 +26,6 @@ public class Book {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "isVip", nullable = false)
+    @Column(name = "is_vip", nullable = false)
     private boolean isVip;
 }
