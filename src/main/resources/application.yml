@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: SpringSecurity
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/security
+    username: postgres
+    password: rootP
+  jpa:
+    hibernate:
+      ddl-auto: update
