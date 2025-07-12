@@ -9,7 +9,6 @@ public class BookMapper {
 
     public BookDto toDto(Book book) {
         return new BookDto(
-                book.getId(),
                 book.getTitle(),
                 book.getPrice()
         );

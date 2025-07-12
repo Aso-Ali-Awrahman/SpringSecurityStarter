@@ -14,6 +14,10 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
+    public List<Book> getBooks() {
+        return bookRepository.findAll();
+    }
+
     public List<Book> getBookByTitle(String title) {
         return bookRepository.findBookByTitleLikeIgnoreCase(title);
     }
