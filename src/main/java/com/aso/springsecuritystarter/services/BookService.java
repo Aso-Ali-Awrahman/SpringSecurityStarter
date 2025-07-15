@@ -19,7 +19,7 @@ public class BookService {
     }
 
     public List<Book> getBookByTitle(String title) {
-        return bookRepository.findBookByTitleLikeIgnoreCase(title);
+        return bookRepository.findBookByTitle(title);
     }
 
     public List<Book> getVipBooks() {

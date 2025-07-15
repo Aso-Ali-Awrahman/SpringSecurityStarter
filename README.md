@@ -4,8 +4,8 @@ This simple project used for explaining Spring Security.
 You can watch my YouTube channel playlist where I explained the main parts like the architecture, and the implementation using JWT Authentication, also implementing a simple role based authorization.
 This project is for beginner level, those who are new to Spring Security.
 ____
-###### YouTube Channel(Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ
-___
+## Lab A3 YouTube Channel
+###### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ___
 This project doesn't have the spring security implementation, you have to watch my videos and implemented yourself!
 ____
 #### Notes
