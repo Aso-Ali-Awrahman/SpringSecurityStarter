@@ -1,6 +1,8 @@
 package com.aso.springsecuritystarter.services;
 
 import com.aso.springsecuritystarter.config.JwtConfig;
+import com.aso.springsecuritystarter.entities.Role;
+import com.aso.springsecuritystarter.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -17,10 +19,11 @@ public class JwtService {
         this.jwtConfig = jwtConfig;
     }
 
-    public String generateToken(String email) {
+    public String generateToken(User user) {
         // token payload must be small
         return Jwts.builder()
-                .subject(email)
+                .subject(user.getEmail())
+                .claim("role", user.getRole())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000L * jwtConfig.getAccessTokenExpiration()))
                 .signWith(jwtConfig.getSecretKey())
@@ -41,6 +44,10 @@ public class JwtService {
 
     public String getEmailFromToken(String token) {
         return getClaimsFromToken(token).getSubject();
+    }
+
+    public Role getRoleFromToken(String token) {
+        return Role.valueOf(getClaimsFromToken(token).get("role").toString());
     }
 
     private Claims getClaimsFromToken(String token) {

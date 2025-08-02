@@ -1,8 +1,10 @@
 package com.aso.springsecuritystarter.config;
 
+import com.aso.springsecuritystarter.entities.Role;
 import com.aso.springsecuritystarter.filters.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -65,6 +67,10 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(c -> c
                     .requestMatchers("/auth/login").permitAll()
+                    .requestMatchers("/books/normal").permitAll()
+                    .requestMatchers("/users").hasRole(Role.ADMIN.name())
+                    .requestMatchers("/auth/register").hasRole(Role.ADMIN.name())
+                    .requestMatchers(HttpMethod.POST, "/books").hasRole(Role.ADMIN.name())
                     .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

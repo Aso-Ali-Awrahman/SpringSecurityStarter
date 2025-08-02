@@ -42,7 +42,12 @@ public class AuthController {
                         request.password() // credentials
                 )
         );
-        String token = jwtService.generateToken(request.email());
+
+        var user = userRepository.findByEmail(request.email()).orElse(null);
+        if (user == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        String token = jwtService.generateToken(user);
 
         return ResponseEntity.ok(new JwtResponseDto(token));
     }
