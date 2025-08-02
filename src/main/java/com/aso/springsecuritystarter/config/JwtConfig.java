@@ -15,6 +15,7 @@ import javax.crypto.SecretKey;
 public class JwtConfig {
 
     private int accessTokenExpiration; // 5 minutes
+    private int refreshTokenExpiration;
     private String secret; // must be more than 64
 
     public SecretKey getSecretKey() {

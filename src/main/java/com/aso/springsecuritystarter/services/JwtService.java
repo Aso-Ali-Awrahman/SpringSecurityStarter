@@ -19,13 +19,21 @@ public class JwtService {
         this.jwtConfig = jwtConfig;
     }
 
-    public String generateToken(User user) {
+    public String generateAccessToken(User user) {
+        return generateToken(user, jwtConfig.getAccessTokenExpiration());
+    }
+
+    public String generateRefreshToken(User user) {
+        return generateToken(user, jwtConfig.getRefreshTokenExpiration());
+    }
+
+    public String generateToken(User user, int expiration) {
         // token payload must be small
         return Jwts.builder()
                 .subject(user.getEmail())
                 .claim("role", user.getRole())
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + 1000L * jwtConfig.getAccessTokenExpiration()))
+                .expiration(new Date(System.currentTimeMillis() + 1000L * expiration))
                 .signWith(jwtConfig.getSecretKey())
                 .compact();
     }

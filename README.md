@@ -6,8 +6,7 @@ This project is for beginner level, those who are new to Spring Security.
 ____
 ## Lab A3 YouTube Channel
 ###### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ___
-This project doesn't have the spring security implementation, you have to watch my videos and implemented yourself!
-____
+The **master** branch doesn't have the security implementation. Rather it is on the **SpringSecurity** branch.____
 #### Notes
 - Over the years spring security got frequent updates, so you might not find the best implementation on current versions.
 - In this project we are using version 6.5.1, the current version, date: 10/07/2025.

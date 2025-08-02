@@ -3,7 +3,9 @@ package com.aso.springsecuritystarter.controllers;
 import com.aso.springsecuritystarter.dtos.UserDto;
 import com.aso.springsecuritystarter.mappers.UserMapper;
 import com.aso.springsecuritystarter.services.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,14 @@ public class UserController {
     @GetMapping("/me")
     public ResponseEntity<UserDto> getMyInfo() {
         // after JWT implementation, using the principle object to get the info
-        return ResponseEntity.ok(null);
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        var email = authentication.getPrincipal().toString();
+
+        var user = userService.getUser(email).orElse(null);
+        if (user == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        return ResponseEntity.ok(userMapper.toDto(user));
     }
 
 }
