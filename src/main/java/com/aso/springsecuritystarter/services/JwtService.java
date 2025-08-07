@@ -32,6 +32,7 @@ public class JwtService {
         return Jwts.builder()
                 .subject(user.getEmail())
                 .claim("role", user.getRole())
+                // claim to specify token type.
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000L * expiration))
                 .signWith(jwtConfig.getSecretKey())
