@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String token = authHeader.replace("Bearer ", "");
-        if (!jwtService.validateToken(token)) {
+        if (!jwtService.validateToken(token, JwtService.TokenType.ACCESS)) {
             System.out.println("Invalid token");
             filterChain.doFilter(request, response);
             return;

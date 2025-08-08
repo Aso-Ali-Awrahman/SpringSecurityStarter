@@ -9,6 +9,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class JwtService {
@@ -20,19 +21,24 @@ public class JwtService {
     }
 
     public String generateAccessToken(User user) {
-        return generateToken(user, jwtConfig.getAccessTokenExpiration());
+        return generateToken(user, jwtConfig.getAccessTokenExpiration(), TokenType.ACCESS);
     }
 
     public String generateRefreshToken(User user) {
-        return generateToken(user, jwtConfig.getRefreshTokenExpiration());
+        return generateToken(user, jwtConfig.getRefreshTokenExpiration(), TokenType.REFRESH);
     }
 
-    public String generateToken(User user, int expiration) {
+    public enum TokenType {
+        ACCESS, REFRESH
+    }
+
+    public String generateToken(User user, int expiration, TokenType tokenType) {
         // token payload must be small
         return Jwts.builder()
                 .subject(user.getEmail())
+                .claim("jwtId", UUID.randomUUID().toString())
                 .claim("role", user.getRole())
-                // claim to specify token type.
+                .claim("tokenType", tokenType)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000L * expiration))
                 .signWith(jwtConfig.getSecretKey())
@@ -40,9 +46,11 @@ public class JwtService {
     }
 
     // validating token
-    public boolean validateToken(String token) {
+    public boolean validateToken(String token, TokenType tokenType) {
         try {
             Claims claims = getClaimsFromToken(token);
+            if (!claims.get("tokenType").equals(tokenType.toString()))
+                return false;
             // check for expiration if it is expired return false
             return claims.getExpiration().after(new Date());
         }

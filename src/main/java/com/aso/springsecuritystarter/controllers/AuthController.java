@@ -94,9 +94,9 @@ public class AuthController {
 
     @PostMapping("/refresh")
     public ResponseEntity<JwtResponseDto> refreshToken(@CookieValue(value = "refreshToken") String refreshToken) {
-        if (!jwtService.validateToken(refreshToken))
+        if (!jwtService.validateToken(refreshToken, JwtService.TokenType.REFRESH))
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-
+        // check if it is in the black list token.
         var email = jwtService.getEmailFromToken(refreshToken);
         var user = userRepository.findByEmail(email).orElse(null);
         if (user == null)
