@@ -1,21 +1,26 @@
 # Project Overview
 ___
-This simple project used for explaining Spring Security.
+This simple project used for explaining **Spring Security**.
 You can watch my YouTube channel playlist where I explained the main parts like the architecture, and the implementation using JWT Authentication, also implementing a simple role based authorization.
 This project is for beginner level, those who are new to Spring Security.
 ____
 ## Lab A3 YouTube Channel
-###### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ___
-The **master** branch doesn't have the security implementation. Rather it is on the **SpringSecurity** branch.
+##### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ
+___
+#### Solution
+- The **master** branch doesn't have the security implementation. Rather it is on the **SpringSecurity** branch.
+- All the codes that explained and implemented in the videos are on the **SpringSecurity** branch.
 ____
 #### Notes
 - Over the years Spring Security got frequent updates, so you might not find the best implementation in the current versions.
 - In this project we are using version 6.5.1, the current version, date: 10/07/2025.
 - First we will focus on the architecture, since the architecture won't change.
+- Then adding JWT implementation on top of the dependency.
 #### References
 - I benefited a lot from those resources, from learning the architecture to implementing the JWT.
 ###### CodeSnippet YouTube playlist about Spring Security architecture and JWT
 1. https://youtube.com/playlist?list=PL-bgVzzRdaPgUNCr1cQE_ZLKf5oJaZP4R&si=MNORfxzyfdevHJhb
+2. https://youtu.be/0JP6JHTEw-k?si=KQ_51FQUeYZeiGU- - Scheduling
 ###### Code with Mosh - Spring Boot part 2 course
 - Spring Boot: Mastering REST API Development - [Code With Mosh](codewithmosh.com) - Paid Course - JWT implementation.
 ###### ByteMonk YouTube overview & flow of Spring Security and JWT
@@ -50,11 +55,10 @@ erDiagram
 		double price
 		boolean is_vip
 	}
-
 ```
 ____
 #### Docker Compose file
-- For creating the database using Docker, rather downloading MYSQL applications.
+- For creating the database using Docker, rather downloading Postgres applications.
 - It is included in the project...
 ```yaml
 version: '3.8'
