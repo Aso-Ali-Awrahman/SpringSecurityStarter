@@ -9,6 +9,7 @@ import com.aso.springsecuritystarter.entities.User;
 import com.aso.springsecuritystarter.repositories.UserRepository;
 import com.aso.springsecuritystarter.services.JwtService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -96,7 +97,10 @@ public class AuthController {
     public ResponseEntity<JwtResponseDto> refreshToken(@CookieValue(value = "refreshToken") String refreshToken) {
         if (!jwtService.validateToken(refreshToken, JwtService.TokenType.REFRESH))
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        // check if it is in the black list token.
+        if (jwtService.isRefreshTokenInBlackList(refreshToken)) {
+            System.out.println("Refresh token is black listed");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
         var email = jwtService.getEmailFromToken(refreshToken);
         var user = userRepository.findByEmail(email).orElse(null);
         if (user == null)
@@ -105,6 +109,28 @@ public class AuthController {
         var accessToken = jwtService.generateAccessToken(user);
 
         return ResponseEntity.ok(new JwtResponseDto(accessToken));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletRequest request) {
+        var cookies = request.getCookies();
+        if (cookies == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        String refreshToken = null;
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("refreshToken")) {
+                refreshToken = cookie.getValue();
+                break;
+            }
+        }
+
+        if (!jwtService.validateToken(refreshToken, JwtService.TokenType.REFRESH))
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
+        jwtService.blackListRefreshToken(refreshToken);
+
+        return ResponseEntity.ok().build();
     }
 
 
