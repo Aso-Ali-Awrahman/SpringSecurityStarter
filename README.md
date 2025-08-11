@@ -1,35 +1,42 @@
 # Project Overview
 ___
-This simple project used for explaining Spring Security.
+This simple project used for explaining **Spring Security**.
 You can watch my YouTube channel playlist where I explained the main parts like the architecture, and the implementation using JWT Authentication, also implementing a simple role based authorization.
 This project is for beginner level, those who are new to Spring Security.
 ____
-## Lab A3 YouTube Channel
-###### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ___
-The **master** branch doesn't have the security implementation. Rather it is on the **SpringSecurity** branch.____
-#### Notes
-- Over the years spring security got frequent updates, so you might not find the best implementation on current versions.
+## Lab A3 - YouTube Channel
+##### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ
+___
+### Code Solution
+- The **master** branch doesn't have the security implementation. Rather it is on the **SpringSecurity** branch.
+- All the codes that explained and implemented in the videos are on the **SpringSecurity** branch.
+____
+### Notes
+- Over the years Spring Security got frequent updates, so you might not find the best implementation in the current versions.
 - In this project we are using version 6.5.1, the current version, date: 10/07/2025.
 - First we will focus on the architecture, since the architecture won't change.
-#### References
+- Then adding JWT implementation on top of the dependency.
+- Finally finishing off with **Refresh token** and **Logging out**.
+### References
 - I benefited a lot from those resources, from learning the architecture to implementing the JWT.
-###### CodeSnippet YouTube playlist about Spring Security architecture and JWT
+##### CodeSnippet YouTube playlist about Spring Security architecture and JWT
 1. https://youtube.com/playlist?list=PL-bgVzzRdaPgUNCr1cQE_ZLKf5oJaZP4R&si=MNORfxzyfdevHJhb
-###### Code with Mosh - Spring Boot part 2 course
+2. https://youtu.be/0JP6JHTEw-k?si=KQ_51FQUeYZeiGU- - Scheduling
+##### Code with Mosh - Spring Boot part 2 course
 - Spring Boot: Mastering REST API Development - [Code With Mosh](codewithmosh.com) - Paid Course - JWT implementation.
-###### ByteMonk YouTube overview & flow of Spring Security and JWT
+##### ByteMonk YouTube overview & flow of Spring Security and JWT
 1. https://youtu.be/nhsdPVXhbHo?si=daDReBiEZaSYm4rw - Explaining Spring Security.
 2. https://youtu.be/iB__rLXGsas?si=Q_YmBj98-a_1MtJk - Explaining JWT
-###### ByteByteGo YouTube
+##### ByteByteGo YouTube
 - https://youtu.be/fyTxwIa-1U0?si=OO4lechSxwTfpZ6H - Explaining Session & JWT
 - https://youtu.be/P2CPd9ynFLg?si=PjpJSTJbi4r_8bjC
-###### Other related videos
+##### Other related videos
 1. https://youtu.be/_GSHvvken2k?si=Egko7gqbJ9pS61nL - YouTube - Sergey Tech - Overview.
 2. https://youtu.be/h-9vhFeM3MY?si=JP3Dv4j8PwhuJWmV YouTube - Amigoscode
-###### Spring Security Documentation
+##### Spring Security Documentation
 - https://docs.spring.io/spring-security/reference/servlet/architecture.html
 ---
-#### Database Design
+### Database Design
 - A simple design, which is not practical, but our focus is on Spring Security.
 - You just have to get the concept ;).
 ```mermaid
@@ -49,11 +56,10 @@ erDiagram
 		double price
 		boolean is_vip
 	}
-
 ```
 ____
-#### Docker Compose file
-- For creating the database using Docker, rather downloading MYSQL applications.
+### Docker Compose file
+- For creating the database using Docker, rather downloading Postgres applications.
 - It is included in the project...
 ```yaml
 version: '3.8'
@@ -74,7 +80,7 @@ services:
 volumes:
   pgdata:
 ```
-#### Dependencies
+### Dependencies
 - Dependencies number 1, and 2 are added in the project.
 ##### 1- Initial Dependencies
 ```xml
@@ -147,6 +153,15 @@ ___
 </dependency>
 ```
 ____
+
+### Roadmap
+![Roadmap.png](images/Roadmap.png)
+
+### Spring Security Architecture Design
+![Spring Security Architecture.png](images/Spring%20Security%20with%20JWT.png)
+
+### JWT Design Overview
+![JWT with Spring Security.png](images/JWT%20Implementation%20with%20Spring%20Security.png)
 
 
 
