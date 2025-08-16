@@ -1,9 +1,17 @@
-# Project Overview
+#  سپرینگ سكیوریتی به‌ زمانی كوردی
 ___
 This simple project used for explaining **Spring Security**.
 You can watch my YouTube channel playlist where I explained the main parts like the architecture, and the implementation using JWT Authentication, also implementing a simple role based authorization.
 This project is for beginner level, those who are new to Spring Security.
 ____
+ئەم پرۆژەی سادەیه‌ به‌كاردێت بۆ روونكردنه‌وه‌ی سپرینگ سكیوریتی
+
+ده‌توانی له‌ یوتوب چه‌ناڵه‌كه‌م ته‌ماشای ڤیدیۆكان بكه‌ی، له‌وێ هه‌موویم باسكردووه‌
+
+ئەم پرۆژە بۆ ئاستی دەستپێکە، بۆ ئەوانەی تازە لە سپرینگ سكیوریتی دەست پێدەکەن
+
+
+___
 ## Lab A3 - YouTube Channel
 ##### (Playlist): https://www.youtube.com/playlist?list=PLlqzZ3mN4SChJjog1XEipwRP-MLvrwfxJ
 ___
@@ -30,9 +38,10 @@ ____
 ##### ByteByteGo YouTube
 - https://youtu.be/fyTxwIa-1U0?si=OO4lechSxwTfpZ6H - Explaining Session & JWT
 - https://youtu.be/P2CPd9ynFLg?si=PjpJSTJbi4r_8bjC
-##### Other related videos
+##### Other related videos & Resources
 1. https://youtu.be/_GSHvvken2k?si=Egko7gqbJ9pS61nL - YouTube - Sergey Tech - Overview.
 2. https://youtu.be/h-9vhFeM3MY?si=JP3Dv4j8PwhuJWmV YouTube - Amigoscode
+3. [Linked In](https://www.linkedin.com/posts/muhammad-najh-b647bb143_ive-broken-down-spring-security-to-make-activity-7230177976963727360-tqQf?utm_source=share&utm_medium=member_ios&rcm=ACoAACLTD7wBPh47GqTQs-s6C5LFL5qLXQ5z_EU&lipi=urn%3Ali%3Apage%3Ad_flagship3_detail_base%3BKtma510vS4CRw1A%2BZxheKQ%3D%3D) Post - Muhamad Najh
 ##### Spring Security Documentation
 - https://docs.spring.io/spring-security/reference/servlet/architecture.html
 ---
